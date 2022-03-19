@@ -5,8 +5,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>@ViewData["Title"] - AptidudeTest</title>
 	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/dataTables.bootstrap5.min.css" />
+		<link rel="stylesheet" href="~/lib/bootstrap/dist/css/select.bootstrap5.min.css" />
+
 	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 	<link rel="stylesheet" href="~/AptidudeTest.styles.css" asp-append-version="true" />
+
+	<style>
+	</style>
 </head>
 <body>
 
@@ -29,7 +35,7 @@
 								<a class="nav-link text-dark" asp-area="" asp-controller="Exams" asp-action="Index">Exam</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-dark" asp-area="" asp-controller="Exams" asp-action="Index">Result</a>
+								<a class="nav-link text-dark" asp-area="" asp-controller="Results" asp-action="Index">Result</a>
 							</li>
 						}
 
@@ -46,16 +52,22 @@
 	</div>
 
 	<footer class="bg-light text-center text-lg-start">
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2020 Copyright:
-    <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-  </div>
-  <!-- Copyright -->
-</footer>
+		<!-- Copyright -->
+		<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+			© 2020 Copyright:
+			<a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+		</div>
+		<!-- Copyright -->
+	</footer>
 	<script src="~/lib/jquery/dist/jquery.min.js"></script>
 	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="~/js/site.js" asp-append-version="true"></script>
+
+	<script src="~/lib/jquery/dist/jquery.dataTables.min.js"></script>
+	<script src="~/lib/jquery/dist/dataTables.bootstrap5.min.js"></script>
+	<script>
+			$(document).ready(function () {
+			$('#dataTable').DataTable();
+		});</script>
 	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

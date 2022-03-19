@@ -7,23 +7,25 @@
 }
 
 
-<h1>Edit</h1>
+<h1>Edit Question</h1>
+<div>
 
-<h4>Question</h4>
+	<a class="btn btn-warning" asp-action="Index">Back to List</a>
+</div>
 <hr />
 <div class="row">
-	<div class="col-md-4">
+	<div class="col-md-6">
 		<form asp-action="Edit">
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 			<input type="hidden" asp-for="Id" />
 			<div class="form-group">
-				<label asp-for="Image" class="control-label"></label>
-				<input asp-for="Image" value="none" class="form-control" />
+				@*<label asp-for="Image" class="control-label"></label>*@
+				<input type="hidden" asp-for="Image" value=" " class="form-control" />
 				<span asp-validation-for="Image" class="text-danger"></span>
 			</div>
 			<div class="form-group">
 				<label asp-for="Text" class="control-label"></label>
-				<input asp-for="Text" class="form-control" />
+				<textarea asp-for="Text" class="form-control" rows="3"></textarea>
 				<span asp-validation-for="Text" class="text-danger"></span>
 			</div>
 			<div class="form-group">
@@ -32,50 +34,57 @@
 				<span asp-validation-for="Point" class="text-danger"></span>
 			</div>
 			<div class="form-group">
-				<label asp-for="ExamId" class="control-label"></label>
 				<input asp-for="ExamId" type="hidden" class="form-control" value="@ViewData["ExamId"]" />
 				<span asp-validation-for="ExamId" class="text-danger"></span>
 			</div>
+			<br />
 			<div class="form-group">
 				<input type="submit" value="Save" class="btn btn-primary" />
 			</div>
 		</form>
 	</div>
-</div>
-
-<table class="table">
-	<thead>
-		<tr>
-			<th>
-				#
-			</th>
-			<th>
-				Content
-			</th>
-			<th>
-				Is Correct
-			</th>
-
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach (var item in choices)
-		{
+	<table class="table">
+		<thead>
 			<tr>
-				<td>@c</td>
-				<td>@item.Text</td>
-				<td>@item.IsCorrect</td>
-				
-			</tr>
-			c++;
-		}
-	</tbody>
-<div>
-        <a asp-action="Index" asp-controller="Choices" asp-route-id="@Model?.Id">Edit Choices</a>
+				<th>
+					#
+				</th>
+				<th>
+					Content
+				</th>
+				<th>
+					Is Correct
+				</th>
 
-	<a asp-action="Index">Back to List</a>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in choices)
+			{
+				<tr>
+					<td>@c</td>
+					<td>@item.Text</td>
+					<td>
+						@if (@item.IsCorrect)
+						{
+							<a class="btn btn-success">True</a>
+						}
+						else
+						{
+							<a class="btn btn-secondary">False</a>
+						}
+					</td>
+
+				</tr>
+				c++;
+			}
+		</tbody>
+	</table>
 </div>
+
+
+
 
 @section Scripts {
     @{

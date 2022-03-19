@@ -94,7 +94,7 @@ namespace AptidudeTest.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,ExamName,PassScore,Status")] Exam exam)
+        public IActionResult Edit(int id, [Bind("Id,ExamName,PassScore,Time")] Exam exam)
         {
             try
             {

@@ -5,7 +5,7 @@
 	int c = 1;
 }
 
-<h1>Exam Sections</h1>
+<h1>Test Parts</h1>
 
 
 <table class="table">
@@ -22,7 +22,7 @@
 				Total Score
 			</th>
 			<th>
-				Time (min)
+				Duration (min)
 			</th>
 			<th>
 				Pass Score (%)
@@ -45,14 +45,14 @@
 					@item.Questions.Sum(q=>q.Point)
 				</td>
 				<td>
-					#
+					@Html.DisplayFor(modelItem => item.Time)
 				</td>
 				<td>
 					@Html.DisplayFor(modelItem => item.PassScore)
 				</td>
 				<td>
-					<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-					<a asp-action="Index" asp-controller="Questions" asp-route-id="@item.Id">List Questions</a>
+					<a asp-action="Edit" class="btn btn-info" asp-route-id="@item.Id">Edit</a> 
+					<a asp-action="Index" class="btn btn-secondary" asp-controller="Questions" asp-route-id="@item.Id">Question List</a>
 
 				</td>
 			</tr>

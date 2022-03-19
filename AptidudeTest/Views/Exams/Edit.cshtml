@@ -4,9 +4,10 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
-<h4>Exam</h4>
+<h1>Edit Part</h1>
+<div>
+    <a class="btn btn-warning"asp-action="Index">Back to List</a>
+</div>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -23,22 +24,25 @@
                 <input asp-for="PassScore" class="form-control" />
                 <span asp-validation-for="PassScore" class="text-danger"></span>
             </div>
-            <div class="form-group">
+               <div class="form-group">
+                <label asp-for="Time" class="control-label">Duration (min)</label>
+                <input asp-for="Time" class="form-control" />
+                <span asp-validation-for="Time" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
                 <label asp-for="Status" class="control-label"></label>
                 <input asp-for="Status" class="form-control" />
                 <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
+            </div>*@
+            <br />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-        <a asp-action="Index" asp-controller="Questions" asp-route-id="@Model?.Id">List Questions</a>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
