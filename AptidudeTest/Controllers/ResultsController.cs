@@ -104,6 +104,7 @@ namespace AptidudeTest.Controllers
 
 
             };
+            
             _context.Add(model);
             _context.SaveChanges();
             //ViewData["ExamId"] = new SelectList(_context.Exams, "Id", "ExamName", result.ExamId);
