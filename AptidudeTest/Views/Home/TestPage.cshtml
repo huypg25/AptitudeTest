@@ -31,17 +31,24 @@
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<title>TestPage</title>
 	<link rel="stylesheet" href="~/TestPage.css">
+	<style>
+		.option{
+			cursor: pointer;
+		}
+	</style>
 </head>
 <div class="row">
 	<h3 class="col-10">
 		@Model.ExamName
-		<div>Registration closes in <span id="time">05:00</span> minutes!</div>
 	</h3>
+
 	<div class="col-2 align-content-end">
 		<span>@ViewData["FullName"]</span><br />
 		<span>@ViewData["Phone"]</span>
 	</div>
 </div>
+<div class="btn btn-warning"> <span id="time">05:00s</span> </div>
+
 <body oncontextmenu='return false' class='snippet-body'>
 	<form asp-controller="Results" asp-action="Create" id="myquiz">
 		<div class="container mb-5">
@@ -49,14 +56,16 @@
 				@foreach (var question in Model.Questions)
 				{
 					<div class="col-12">
-						<p class="fw-bold"><span>@i</span> @question.Text</p>
+						<p class="fw-bold"><span>Question No @i.</span>&nbsp;&nbsp; @question.Text</p>
 						<input type="hidden" name="questionId" value="@question.Id" />
 
 						@foreach (var choice in question.Choices)
 						{
 							<div>
-								<input type="radio" name="question_@question.Id" value="@choice.Id" />
-								<label>@choice.Text</label>
+								<label class="option">
+									<input type="radio" name="question_@question.Id" value="@choice.Id" />
+									@choice.Text
+								</label>
 							</div>
 						}
 					</div>
@@ -150,7 +159,7 @@
 		}
 
 		window.onload = function () {
-			var fiveMinutes = 100000000000000,
+			var fiveMinutes = @Model.Time*60,
 				display = document.querySelector('#time');
 			startTimer(fiveMinutes, display);
 		};

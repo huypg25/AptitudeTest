@@ -79,6 +79,7 @@ namespace AptidudeTest.Controllers
                                     .Include(c => c.Choices)
                                     .FirstOrDefault(n => n.Id == int.Parse(questionId));
                 var choiceIdCorrect = questionDetail.Choices.FirstOrDefault(x => x.IsCorrect == true).Id;
+                if (choiceIdCorrect == null) choiceIdCorrect = -1;
                 var a = iFormCollection["question_" + questionId].ToString();
                 if (a == "") a = "0";
                 if (choiceIdCorrect == int.Parse(a))
