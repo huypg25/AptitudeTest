@@ -1,0 +1,66 @@
+﻿@model IEnumerable<AptidudeTest.Models.Result>
+
+@{
+	ViewData["Title"] = "Result";
+}
+
+<h1 style="width: 60%;  margin: 0 auto;">Result</h1>
+
+
+<table  class="table" style="width: 60%;  margin: 0 auto;">
+	<thead>
+		<tr width=300>
+
+			<th width=150>
+				#
+			</th>
+			<th width=100>
+				Score
+			</th >
+
+			<th width=100>Status</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@if (item.ExamId == 1)
+					{
+						<span>
+							General Knowledge
+						</span>
+					}
+					@if (item.ExamId == 2)
+					{
+						<span>Mathematics</span>
+					}
+					@if (item.ExamId == 3)
+					{
+						<span>
+							Computer Technology
+						</span>
+					}
+				</td>
+
+				<td>
+					@Html.DisplayFor(modelItem => item.ResultScore) / @item.PassScore
+				</td>
+				<td>
+					@if (item.Status == true)
+					{
+						<span>Pass</span>
+					}
+					else
+					{
+						<span>Fail</span>
+
+					}
+				</td>
+
+			</tr>
+		}
+	</tbody>
+</table>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<AptidudeTest.Models.Exam>
+
+@{
+	ViewData["Title"] = "Exam Sections";
+	int c = 1;
+}
+
+<h1>Exam Sections</h1>
+
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>
+				@Html.DisplayNameFor(model => model.ExamName)
+			</th>
+			<th>
+				Number of questions
+			</th>
+			<th>
+				Total Score
+			</th>
+			<th>
+				Time (min)
+			</th>
+			<th>
+				Pass Score (%)
+			</th>
+			<th>#</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@c</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.ExamName)
+				</td>
+				<td>
+					@item.Questions.Count()
+				</td>
+				<td>
+					@item.Questions.Sum(q=>q.Point)
+				</td>
+				<td>
+					#
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.PassScore)
+				</td>
+				<td>
+					<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+					<a asp-action="Index" asp-controller="Questions" asp-route-id="@item.Id">List Questions</a>
+
+				</td>
+			</tr>
+			c++;
+		}
+	</tbody>
+</table>
