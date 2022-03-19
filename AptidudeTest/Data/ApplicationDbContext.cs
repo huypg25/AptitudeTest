@@ -18,5 +18,7 @@ namespace AptidudeTest.Data
         public DbSet<Question> Questions { get; set; }
         public DbSet<Choice> Choices { get; set; }
         public DbSet<Result> Results { get; set; }
+        public DbSet<PassedCandidate> PassedCandidate { get; set; }
+
     }
 }

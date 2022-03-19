@@ -33,15 +33,18 @@
 	<link rel="stylesheet" href="~/TestPage.css">
 </head>
 <div class="row">
-	<h3 class="col-10">@Model.ExamName</h3>
+	<h3 class="col-10">
+		@Model.ExamName
+		<div>Registration closes in <span id="time">05:00</span> minutes!</div>
+	</h3>
 	<div class="col-2 align-content-end">
 		<span>@ViewData["FullName"]</span><br />
 		<span>@ViewData["Phone"]</span>
 	</div>
 </div>
 <body oncontextmenu='return false' class='snippet-body'>
-	<form asp-controller="Results" asp-action="Create">	
-	<div class="container mb-5">
+	<form asp-controller="Results" asp-action="Create" id="myquiz">
+		<div class="container mb-5">
 			<div class="row">
 				@foreach (var question in Model.Questions)
 				{
@@ -119,14 +122,39 @@
 								<span>Continue</span>
 							}
 						</button>
-
-
 					</div>
 				</div>
 			</div>
 		</div>
 	</form>
 	<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
+
+
+	<script>
+			function startTimer(duration, display) {
+			var timer = duration, minutes, seconds;
+			setInterval(function () {
+				minutes = parseInt(timer / 60, 10);
+				seconds = parseInt(timer % 60, 10);
+
+				minutes = minutes < 10 ? "0" + minutes : minutes;
+				seconds = seconds < 10 ? "0" + seconds : seconds;
+
+				display.textContent = minutes + ":" + seconds;
+
+				if (--timer < 0) {
+					 clearInterval(timer);
+					document.getElementById('myquiz').submit();
+				}
+			}, 1000);
+		}
+
+		window.onload = function () {
+			var fiveMinutes = 100000000000000,
+				display = document.querySelector('#time');
+			startTimer(fiveMinutes, display);
+		};
+	</script>
 </body>
 
 </html>

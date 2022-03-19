@@ -67,6 +67,8 @@ namespace AptidudeTest.Controllers
             string[] questionIds = iFormCollection["questionId"];
             var ExamId = iFormCollection["ExamId"];
             var UserId = iFormCollection["UserId"];
+
+
             var examDetails = _context.Exams
                                 .Include(q => q.Questions)
                                 .ThenInclude(c => c.Choices)
@@ -77,7 +79,9 @@ namespace AptidudeTest.Controllers
                                     .Include(c => c.Choices)
                                     .FirstOrDefault(n => n.Id == int.Parse(questionId));
                 var choiceIdCorrect = questionDetail.Choices.FirstOrDefault(x => x.IsCorrect == true).Id;
-                if (choiceIdCorrect == int.Parse(iFormCollection["question_" + questionId]))
+                var a = iFormCollection["question_" + questionId].ToString();
+                if (a == "") a = "0";
+                if (choiceIdCorrect == int.Parse(a))
                 {
                     total += questionDetail.Point;
                 }
@@ -92,7 +96,10 @@ namespace AptidudeTest.Controllers
             {
                 Status = false;
             }
-
+            if (PassScore == 0)
+            {
+                Status = true;
+            }
             var model = new Result()
             {
                 ExamId = int.Parse(ExamId),
@@ -104,7 +111,7 @@ namespace AptidudeTest.Controllers
 
 
             };
-            
+
             _context.Add(model);
             _context.SaveChanges();
             //ViewData["ExamId"] = new SelectList(_context.Exams, "Id", "ExamName", result.ExamId);
@@ -112,12 +119,12 @@ namespace AptidudeTest.Controllers
             {
                 var i = int.Parse(ExamId);
                 i++;
-                return RedirectToAction("testpage","Home",new { id = i });
+                return RedirectToAction("testpage", "Home", new { id = i });
             }
             var result = _context.Results.ToList().Where(x => x.UserId == UserId);
             foreach (var item in result)
             {
-                if (item.Status = true) count++;
+                if (item.Status == true) count++;
             }
             if (count == 3)
             {
@@ -129,7 +136,22 @@ namespace AptidudeTest.Controllers
                 _context.Users.Find(UserId).Status = 0;
                 _context.SaveChanges();
             }
-
+            var listUserPassed = _context.Users.ToList().Where(x => x.Status == 1);
+            foreach (var item in listUserPassed)
+            {
+                var user = new PassedCandidate()
+                {
+                    Email = item.Email,
+                    Address = item.Address,
+                    DateOfBirth = item.DateOfBirth,
+                    Education =item.Education,
+                    FullName = item.FullName,
+                    WorkExperience = item.WorkExperience,
+                    Phone = item.Phone,
+                };
+                _context.PassedCandidate.Add(user);
+                _context.SaveChanges();
+            }
             return View("FinalResult", result);
         }
         //[HttpGet]

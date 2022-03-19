@@ -36,6 +36,8 @@ namespace AptidudeTest.Controllers
             ViewData["FullName"] = user.FullName;
             ViewData["Phone"] = user.Phone;
             ViewData["Id"] = user.Id;
+            if (_context.Results.Any(x => x.ExamId == id && x.UserId == user.Id)) return View("Views/Home/Error.cshtml");
+
             var data = _context.Exams
                         .Include(q => q.Questions)
                         .ThenInclude(c => c.Choices)
