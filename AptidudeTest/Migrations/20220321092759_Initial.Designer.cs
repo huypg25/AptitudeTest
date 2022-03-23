@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AptidudeTest.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220319175322_Initial")]
+    [Migration("20220321092759_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

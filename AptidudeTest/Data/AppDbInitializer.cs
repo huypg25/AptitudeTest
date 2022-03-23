@@ -1,5 +1,4 @@
-﻿
-using AptidudeTest.Data.Static;
+﻿using AptidudeTest.Data.Static;
 using AptidudeTest.Models;
 using Microsoft.AspNetCore.Identity;
 
@@ -51,7 +50,6 @@ namespace AptidudeTest.Data
         {
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
             {
-
                 var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
                 context.Database.EnsureCreated();
 
@@ -107,7 +105,69 @@ namespace AptidudeTest.Data
                             Point = 10,
                             ExamId = 1,
                         },
+                          new Question()
+                        {
+                            Text = "Garampani sanctuary is located at",
+                            Point = 10,
+                            ExamId = 1,
+                        },
+                            new Question()
+                        {
+                            Text = "For which of the following disciplines is Nobel Prize awarded?",
+                            Point = 10,
+                            ExamId = 1,
+                        },
 
+                            //Exam2
+                             new Question()
+                        {
+                            Text = "121 Divided by 11 is ",
+                            Point = 10,
+                            ExamId = 2,
+                        },
+                        new Question()
+                        {
+                            Text = "60 Times of 8 Equals to",
+                            Point = 10,
+                            ExamId = 2,
+                        },
+                        new Question()
+                        {
+                            Text = " Find the Missing Term in Multiples of 6 : 6, 12, 18, 24, _, 36, 42, _ 54, 60.",
+                            Point = 10,
+                            ExamId = 2,
+                        },
+                          new Question()
+                        {
+                            Text = "What is the Next Prime Number after 7 ?",
+                            Point = 10,
+                            ExamId = 2,
+                        },
+                            new Question()
+                        {
+                            Text = "The Product of 131 × 0 × 300 × 4",
+                            Point = 10,
+                            ExamId = 2,
+                        },
+                            //Exam3
+                             new Question()
+                        {
+                            Text = "121 Divided by 11 is ",
+                            Point = 10,
+                            ExamId = 3,
+                        },
+                        new Question()
+                        {
+                            Text = "60 Times of 8 Equals to",
+                            Point = 10,
+                            ExamId = 3,
+                        },
+                        new Question()
+                        {
+                            Text = " Find the Missing Term in Multiples of 6 : 6, 12, 18, 24, _, 36, 42, _ 54, 60.",
+                            Point = 10,
+                            ExamId = 3,
+                        },
                     });
                     context.SaveChanges();
                 }
@@ -116,6 +176,7 @@ namespace AptidudeTest.Data
                 {
                     context.Choices.AddRange(new List<Choice>()
                     {
+                        //=================== GENERAL KNOWLEDGE ===================
                         //Question 1
                         new Choice()
                         {
@@ -191,12 +252,270 @@ namespace AptidudeTest.Data
                              QuestionId = 3,
                              IsCorrect = false,
                         },
+                                 //Question 4
+                                    new Choice()
+                        {
+                             Text = "Junagarh, Gujarat",
+                             QuestionId = 4,
+                             IsCorrect = false,
+                        },
+                           new Choice()
+                        {
+                             Text = "Diphu, Assam",
+                             QuestionId = 4,
+                             IsCorrect = true,
+                        },
+                              new Choice()
+                        {
+                             Text = "Kohima, Nagaland",
+                             QuestionId = 4,
+                             IsCorrect = false,
+                        },
+                                 new Choice()
+                        {
+                             Text = "Gangtok, Sikkim",
+                             QuestionId = 4,
+                             IsCorrect = false,
+                        },
+                                           //Question 5
+                                    new Choice()
+                        {
+                             Text = "Physics and Chemistry",
+                             QuestionId = 5,
+                             IsCorrect = false,
+                        },
+                           new Choice()
+                        {
+                             Text = "Physiology or Medicine",
+                             QuestionId = 5,
+                             IsCorrect = false,
+                        },
+                              new Choice()
+                        {
+                             Text = "Literature, Peace and Economics",
+                             QuestionId = 5,
+                             IsCorrect = false,
+                        },
+                                 new Choice()
+                        {
+                             Text = "All of the above",
+                             QuestionId = 5,
+                             IsCorrect = true,
+                        },
+                          //=================== GENERAL KNOWLEDGE ===================
+
+                        //=================== Mathematics KNOWLEDGE ===================
+                        //Question 1
+                        new Choice()
+                        {
+                             Text = "11",
+                             QuestionId = 6,
+                             IsCorrect = true,
+                        },
+                           new Choice()
+                        {
+                             Text = "10",
+                             QuestionId = 6,
+                             IsCorrect = false,
+                        },
+                              new Choice()
+                        {
+                             Text = "19",
+                             QuestionId = 6,
+                             IsCorrect = false,
+                        },
+                                 new Choice()
+                        {
+                             Text = "12",
+                             QuestionId = 6,
+                             IsCorrect = false,
+                        },
+                                 //Question 2
+                        new Choice()
+                        {
+                             Text = "480",
+                             QuestionId = 7,
+                             IsCorrect = true,
+                        },
+                           new Choice()
+                        {
+                             Text = "300",
+                             QuestionId = 7,
+                             IsCorrect = false,
+                        },
+                              new Choice()
+                        {
+                             Text = "250",
+                             QuestionId = 7,
+                             IsCorrect = false,
+                        },
+                                 new Choice()
+                        {
+                             Text = "400",
+                             QuestionId = 7,
+                             IsCorrect = false,
+                        },
+                                            //Question 3
+                        new Choice()
+                        {
+                             Text = "32, 45",
+                             QuestionId = 8,
+                             IsCorrect = false,
+                        },
+                           new Choice()
+                        {
+                             Text = "30, 48",
+                             QuestionId = 8,
+                             IsCorrect = true,
+                        },
+                              new Choice()
+                        {
+                             Text = "24, 40",
+                             QuestionId = 8,
+                             IsCorrect = false,
+                        },
+                                 new Choice()
+                        {
+                             Text = "25, 49",
+                             QuestionId = 8,
+                             IsCorrect = false,
+                        },
+                                 //Question 4
+                                    new Choice()
+                        {
+                             Text = "13",
+                             QuestionId = 9,
+                             IsCorrect = false,
+                        },
+                           new Choice()
+                        {
+                             Text = "12",
+                             QuestionId = 9,
+                             IsCorrect = true,
+                        },
+                              new Choice()
+                        {
+                             Text = "14",
+                             QuestionId = 9,
+                             IsCorrect = false,
+                        },
+                                 new Choice()
+                        {
+                             Text = "11",
+                             QuestionId = 9,
+                             IsCorrect = false,
+                        },
+                                           //Question 5
+                                    new Choice()
+                        {
+                             Text = "11",
+                             QuestionId = 10,
+                             IsCorrect = false,
+                        },
+                           new Choice()
+                        {
+                             Text = "0",
+                             QuestionId = 10,
+                             IsCorrect = true,
+                        },
+                              new Choice()
+                        {
+                             Text = "46",
+                             QuestionId = 10,
+                             IsCorrect = false,
+                        },
+                                 new Choice()
+                        {
+                             Text = "45",
+                             QuestionId = 10,
+                             IsCorrect = false,
+                        },
+                        //  //=================== Mathematics KNOWLEDGE ===================
+
+
+                                       //=================== Tech KNOWLEDGE ===================
+                        //Question 1
+                        new Choice()
+                        {
+                             Text = "11",
+                             QuestionId = 11,
+                             IsCorrect = true,
+                        },
+                           new Choice()
+                        {
+                             Text = "10",
+                             QuestionId = 11,
+                             IsCorrect = false,
+                        },
+                              new Choice()
+                        {
+                             Text = "19",
+                             QuestionId = 11,
+                             IsCorrect = false,
+                        },
+                                 new Choice()
+                        {
+                             Text = "12",
+                             QuestionId = 11,
+                             IsCorrect = false,
+                        },
+                                 //Question 2
+                        new Choice()
+                        {
+                             Text = "480",
+                             QuestionId = 12,
+                             IsCorrect = true,
+                        },
+                           new Choice()
+                        {
+                             Text = "300",
+                             QuestionId = 12,
+                             IsCorrect = false,
+                        },
+                              new Choice()
+                        {
+                             Text = "250",
+                             QuestionId = 12,
+                             IsCorrect = false,
+                        },
+                                 new Choice()
+                        {
+                             Text = "400",
+                             QuestionId = 12,
+                             IsCorrect = false,
+                        },
+                                            //Question 3
+                        new Choice()
+                        {
+                             Text = "32, 45",
+                             QuestionId = 13,
+                             IsCorrect = false,
+                        },
+                           new Choice()
+                        {
+                             Text = "30, 48",
+                             QuestionId = 13,
+                             IsCorrect = true,
+                        },
+                              new Choice()
+                        {
+                             Text = "24, 40",
+                             QuestionId = 13,
+                             IsCorrect = false,
+                        },
+                                 new Choice()
+                        {
+                             Text = "25, 49",
+                             QuestionId = 13,
+                             IsCorrect = false,
+                        },
+                               
+                        //  //=================== Tech KNOWLEDGE ===================
 
                     });
                     context.SaveChanges();
                 }
             }
         }
-
     }
 }
